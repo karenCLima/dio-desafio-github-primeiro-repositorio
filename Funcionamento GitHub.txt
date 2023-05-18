@@ -1,0 +1,57 @@
+Funcionamento GitHub
+
+*Como saber se seu git está  com a mesma configuração do 
+gihub:
+no terminal do gitbash 
+>git config --list (traz uma lista com todas as configurações)
+aperte q para sair
+
+*Como alterar configurações:
+no terminal do gitbash 
+>git config --global --unset user.email(aperte enter)
+>git config --global --unset user.nickname (aperte enter)
+Basta rodar novamente o código para criar um novo email e nickname
+>git config --global user.email "lima.kcls@gmail.com" (aperte enter)
+>git config --global user.nickname "Lima27" (aperte enter)
+
+*Como criar um repositorio no github
+
+Meus repositorio->new
++Não marcar a opção readme
+Copiar o endereço do github para o git
+ir no gibash
+lá no arquivo de receitas (no arquivo onde está os códigos que vc deseja passar para o repositorio no github)
+>git remote add origin (cola o link que vc copiou)
+(origin é apenas o apelido que vc quer dar, poderia ser qualquer um)
+>git remote -v
+>git status (para ver se está tudo ok)
+>git push origin master (aperte enter)
+Ele pede credenciais
+ele envia repositorio local para repositorio remoto
+
+*Resolvendo conflito  de versionamento (merging) do tipo commit que está no repositório é difrente do que vc  quer empurrar
+no gitbash
+depois de alterar algum arquivo
+>git pull origin master
+Faz as alterações para corrigir (o que está depois do HEAD são
+alterações que vc fez, depois do asterisco são de outras pessoas)
+Volta para o terminal
+>git status (para mostrar o status)
+>git add * (para pegar todos os arquivos e passar do modified para o staged)
+>git commit -m "resolve conflitos" (para comittar o arquivo)
+>git push origin master (para empurrar para o repositorio remoto)
+
+
+*Como clonar um codigo do github
+vai no codigo e copia a url (Ex:de um arquivo chamado cpython)
+vai no terminal do gitbash
+no arquivo de receitas
+>git clone (cola url)
+>ls (para ver se baixou no repositorio)
+> cd cpython (par entrar nesse repositorio)
+>ls
+>ls -a (mostra repositorios ocultos)
+>git remove -m (mostra que repositorios ele está apontado)
+
+
+

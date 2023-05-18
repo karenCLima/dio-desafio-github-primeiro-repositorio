@@ -1,0 +1,188 @@
+Funcionamento do Git
+
+*Fundamentos do Git
+
+-SHA1:Significa Secure Hash Algorithm (algoritmo de hash seguro), é um conjunto de funções
+	hash criptográfica projetadas pela NSA (Agencia de Segurança Nacional dos EUA).
+	A encriptação gera um conjunto de caracteres identificador de 40 digitos. Para cada 
+	arquivo ele gera um identificador encriptado único e de forma segura.
+
+-Objetos Internos:
++BLOBS:Guarda metadados nesses objetos. Ele tem o tipo do objeto, tamanho da string ou arquivo, 
+	uma barra com zero (/0) e um conteúdo desse arquivo. Armazena metadados do Git.
++TREES: Elas armazenam e apontam para blobs diferentes. Contém metadados e aponta para um blob ou
+	para outras árvores e guarda o nome do arquivo. Ela monta toda a estrutura de onde está lo-
+	calizada o arquivo. Elas tbm tem um SHA1 desse metadado das árvores.
++COMMIT: Ele junta toda a informação.Ele aponta uma arvore, para o ultimo commit (parente), para o autor e 
+	para a mensagem e tem um carimbo de tempo. Dá significado a todas as mudanças com arvores e blobs.
+	Também possui SHA1. Ele mostra que não tem interferencia de outra pessoa, pois você vai ter todo um historio,
+	pois quando você altera o arquivo (blob) altera a arvore e o commit. O commit é unico.
+
+-------------------------------------------------------------------------------------------------------------------------
+* Chave SSH 
+
+-Criando Chave SSH no GitBash (no windows):
+>ssh-keygen -t ed25519 -c (escreve seu email do github)
+	vai gerar a chave e o local onde fica a chave
+>pressione enter
+	ele vai pedir uma senha. Coloque a senha
+Pronto
+
+-Vamos ver a chave:
+>cd /(todo o caminho aonde esta a chave)/.ssh/
+>ls
+>cat id_ed25519.pub
+	Copia a chave publica que vai aparecer
+	É essa chave que vc vai usar no GitHub
+
+-Colocando a chave  no github:
+perfil->SSH and GPG keys-> SSH Keys-> 
+title: minha maquina windows
+key:Aquele que vc copiou
+confirmar a senha
+Pronto ele gera a senha
+
+-Validando a chave privada no PC (adicionando ao ssh-agent)
+>volta no gitBash
+>pwd para ver se esta na pasta do ssh
+>eval $(ssh-agent -s)
+	Ele starta um projeto e mostra o numero do processo
+>ssh-add id_ed25519 (passa a chave privada)(senão estiver dentro da pasta tem que escrever o caminho)
+	coloca a senha
+Pronto
+
+-usando a chave ssh sem usar senha para clonar:
+> git clone (colococa o link ssh que pegou no github-> code)
+>yes
+Pronto ja clonou
+>ls (para ver se funcionou)
+----------------------------------------------------------------------------------------------------------------
+*Token
+
+- Criando token:
+perfil->Developer setting-> personal acess token-> generate new token
+> define data de expiração 
+> marca a opção repo
+>Coloca um nome para token. Ex: meu token
+>aperta generate token
+>copia o token e salva em um local seguro
+(copia porque ele apaga e se voltar para pagina ele não vai aparecer mais)
+
+-usando o token:
+>vai novamente em code-> copia o link HTTPS
+>vai para o gitbash em uma pasta especifica
+> git clone (link https)
+>coloca o token na janela que abriu
+	(só  vai abrir essa janela para versões do Git 2.30 para frente)
+Pronto
+-------------------------------------------------------------------------------------------
+*Primeiros comandos Git
+
+#Criando um repositorio:
+>crie uma pasta chamada workspace
+>no repositorio c
+>ls
+>cd workspace/
+>mkdir livro-receitas (criando um novo repositorio)
+>ls
+>cd livro-receitas/
+>git init 
+	(criando um repositorio dentro do diretorio)
+>ls -a 
+	(mostra os arquivos git)
+>cd .git/
+>ls
+>cd ..
+>cls
+#configuração inicial se usa o git pela primeira vez
+>git config --global user.email "passa seu email aqui"
+>git config --global user.name nome
+
+#Adicionando um arquivo na pasta
+>No explorador de arquivos-> vai no livro-receitas e cria um markdown: bolo.md
+>abra o arquivo md
+>escreva a receita
+	#Bolo de chocolate
+	**receita da familia** -fica em negrito
+	~~receita~~ - fica em italico
+	espaço - espaço : ele cria uma lista
+	(em Ajuda->markdown reference: ele vai exemplificar tudo o que você pode fazer com o markdown)
+	cola uma receita
+>salva a receita
+
+#commitar o arquivo
+>vai no gitbash na pasta livro-receitas
+>git add *
+	(voce move o arquivo para area de stage)
+>git commit -m "commit inicial"
+	(os arquivos vão da area de stage para o repositorio local (unmodified))
+>git status
+	(vai dizer o status)
+#criar nova pasta
+>mkdir receitas
+>ls
+#mover a receita bolo para dentro dessa pasta
+>mv bolo.md ./receitas/
+>git status
+	(ele indica todas as mudanças)
+>git add bolo.md receitas/
+	(adicionou na area staged)
+>git status
+	(mostra que tem que commitar esses arquivos)
+>git commit -m "Cria pasta receitas, move arquivo para receitas"
+>git  status
+	(mostra que não tem mais nada para commitar)
+#Vou adicionar outro arquivo (um arquivo indexador)
+>echo > README.md
+>ls
+>git status
+	(vai mostrar que temos um arquivo untracked)
+>Abre o arquivo README.md eescreve uma capa para o livro de receitas
+	#Livro de Receitas
+	Olá! bem vindo ao meu livro de receitas
+	-lista de receitas
+salva o arquivo
+>volta no gitbash
+>git add *
+	(leva tudo que foi modificado e leva para staged)
+
+>git status
+	(mostra que o arquivo tem que ser commited)
+>git commit -m "adiciona index"
+	(commita o arquivo README)
+
+OBS:Todas as formulas validas
++git add nomeDoArquivo
++git add*: Pega todos os que foram modificados
+dit add.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

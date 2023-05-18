@@ -1,0 +1,27 @@
+Comando básico para o terminal
+
+*Como acessar o terminal: Escreva cdm na barra de pesquisa e selecione o terminal de comando
+
+*Comandos Windows:
+-dir : mostra os diretorios/listas as pastas
+-cd: vai para uma pasta/diretorio específico
+-cd /: vai para o diretório  c(base)
+-cd ..: volta a um local anterior
+-cls: limpa o terminal
+-mkdir workspace: cria uma pasta/diretório
+-echo: printa o que vc digitou. 
+-echo hello >hello.txt :  Cria um arquivo txt com o texto hello.
+-del workspace: Deleta os arquivo dentro de um diretorio (nessa caso do diretorio workspace)
+-rmdir workspace /S /Q: Deleta um diretorio com tudo o que está dentro. (nessa caso deleta o diretorio workspace) 
+-Tab: Faz o autocomplete.
+
+*Comandos Linux:
+-ls : mostra os diretorios/listas as pastas
+-cd: vai para uma pasta/diretorio específico
+-cd /: vai para o diretório  c(base)
+-cd ..: volta a um local anterior
+-clear: limpa o terminal
+-mkdir workspace: cria uma pasta/diretório
+-echo: printa o que vc digitou. 
+-echo hello >hello.txt :  Cria um arquivo txt com o texto hello.
+-rm -rf worspace: Deleta um diretorio com tudo o que está dentro. (nessa caso deleta o diretorio workspace) 
